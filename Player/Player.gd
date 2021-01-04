@@ -16,12 +16,14 @@ var state = MOVE
 var roll_vector  = Vector2.DOWN
 var stats = PlayerStats
 var simultaneous_scene = preload("res://level/GameOver.tscn").instance()
+var inventoryState = "HIDE"
 
 onready var animationPlayer = $AnimationPlayer 
 onready var animationTree = $AnimationTree
 onready var animationState = animationTree.get("parameters/playback")
 onready var swordHitbox = $Position2D/SwordHitBox
 onready var hurtBox = $HurtBox
+onready var inventory = $"Camera2D/Inventory"
 
 func _physics_process(delta):
 	match state:
@@ -31,6 +33,32 @@ func _physics_process(delta):
 			roll_state(delta)
 		ATTACK:
 			attack_state(delta)
+		
+	match inventoryState:
+			"HIDE":
+				inventory.hide()
+				get_tree().paused = false
+				ACCELERATION = 500
+				FRICTION = 500
+				MAX_SPEED = 100
+				inventory.animated.frame = 0
+				
+			"SHOW":
+				inventory.show()
+				get_tree().paused = true
+				inventory.playing_animation()
+				ACCELERATION = 0
+				FRICTION = 999999999999999
+				MAX_SPEED = 0
+				velocity = move_and_slide(Vector2.ZERO)
+				
+				
+
+	if Input.is_action_just_pressed("Inventory"):
+		if inventoryState == "HIDE":
+			inventoryState = "SHOW"
+		else:
+			inventoryState = "HIDE"
 
 func _ready():
 	stats.connect("no_health", self, "game_over")
@@ -63,7 +91,6 @@ func move_state(delta):
 		state = ATTACK
 		
 	if Input.is_action_just_pressed("roll"):
-		
 		state = ROLL
 
 func roll_state(delta):
@@ -78,7 +105,7 @@ func attack_state(delta):
 func attack_animation_finished():
 	velocity = velocity * 0
 	state = MOVE
-
+	
 func roll_animation_finished():
 	state = MOVE
 	

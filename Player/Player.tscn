@@ -1,11 +1,10 @@
-[gd_scene load_steps=55 format=2]
+[gd_scene load_steps=54 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Player/Player.png" type="Texture" id=2]
 [ext_resource path="res://Overlap/HitBox.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Player/SwordHitBox.gd" type="Script" id=4]
 [ext_resource path="res://Overlap/HurtBox.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Music and Sounds/Swipe.wav" type="AudioStream" id=6]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 4.30867
@@ -64,20 +63,6 @@ tracks/3/keys = {
 "update": 1,
 "values": [ false, true ]
 }
-tracks/4/type = "audio"
-tracks/4/path = NodePath("AudioStreamPlayer")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"clips": [ {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource( 6 )
-} ],
-"times": PoolRealArray( 0.1 )
-}
 
 [sub_resource type="Animation" id=3]
 resource_name = "AttackLeft"
@@ -131,20 +116,6 @@ tracks/3/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
-}
-tracks/4/type = "audio"
-tracks/4/path = NodePath("AudioStreamPlayer")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"clips": [ {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource( 6 )
-} ],
-"times": PoolRealArray( 0.1 )
 }
 
 [sub_resource type="Animation" id=4]
@@ -200,20 +171,6 @@ tracks/3/keys = {
 "update": 1,
 "values": [ false, true ]
 }
-tracks/4/type = "audio"
-tracks/4/path = NodePath("AudioStreamPlayer")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"clips": [ {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource( 6 )
-} ],
-"times": PoolRealArray( 0.1 )
-}
 
 [sub_resource type="Animation" id=5]
 resource_name = "AttackUp"
@@ -267,20 +224,6 @@ tracks/3/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
-}
-tracks/4/type = "audio"
-tracks/4/path = NodePath("AudioStreamPlayer")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"clips": [ {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource( 6 )
-} ],
-"times": PoolRealArray( 0.1 )
 }
 
 [sub_resource type="Animation" id=6]
@@ -672,22 +615,26 @@ radius = 9.67411
 height = 9.88785
 
 [node name="Player" type="KinematicBody2D"]
+pause_mode = 1
 position = Vector2( -0.105103, 0 )
 collision_layer = 2
 collision_mask = 2147483649
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
+pause_mode = 1
 position = Vector2( 0, -9 )
 texture = ExtResource( 2 )
 hframes = 60
 frame = 18
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+pause_mode = 1
 rotation = -1.5708
 shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+pause_mode = 1
 anims/AttackDown = SubResource( 2 )
 anims/AttackLeft = SubResource( 3 )
 anims/AttackRight = SubResource( 4 )
@@ -706,6 +653,7 @@ anims/RunRight = SubResource( 16 )
 anims/RunUp = SubResource( 17 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
+pause_mode = 1
 tree_root = SubResource( 45 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
@@ -717,7 +665,7 @@ parameters/Run/blend_position = Vector2( 0, 1 )
 
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( 0, -4 )
-rotation = 4.71239
+rotation = 1.5708
 __meta__ = {
 "_gizmo_extents_": 16.0
 }
@@ -731,6 +679,7 @@ script = ExtResource( 4 )
 [node name="CollisionShape2D" parent="Position2D/SwordHitBox" index="0"]
 position = Vector2( -0.0883865, -4.86136 )
 shape = SubResource( 47 )
+disabled = true
 
 [node name="HurtBox" parent="." instance=ExtResource( 5 )]
 position = Vector2( -0.297298, -3.71627 )
@@ -741,9 +690,6 @@ collision_layer = 4
 position = Vector2( -0.140305, -7.15569 )
 scale = Vector2( 0.8, 1 )
 shape = SubResource( 48 )
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 6 )
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
 
 [editable path="Position2D/SwordHitBox"]
