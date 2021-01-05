@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://UI/items.png" type="Texture" id=1]
-[ext_resource path="res://Item/Item.gd" type="Script" id=2]
+[ext_resource path="res://Item/redPotionItem.gd" type="Script" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 29.3963
@@ -10,10 +10,11 @@ radius = 29.3963
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.977043, 1.05027 )
 texture = ExtResource( 1 )
 vframes = 3
 hframes = 3
-frame = 2
+frame = 8
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 64

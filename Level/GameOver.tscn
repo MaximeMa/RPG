@@ -3,8 +3,8 @@
 [node name="GameOver" type="Node2D"]
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_right = 25.0
-margin_bottom = 40.0
+margin_right = 18.2
+margin_bottom = 22.5
 rect_scale = Vector2( 17.5939, 8.07671 )
 color = Color( 0.355469, 0.0847015, 0.0847015, 1 )
 __meta__ = {
