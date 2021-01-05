@@ -6,6 +6,7 @@
 [ext_resource path="res://UI/cursor.gd" type="Script" id=4]
 [ext_resource path="res://UI/Item.gd" type="Script" id=5]
 
+
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 320, 180 )
@@ -55,75 +56,54 @@ animations = [ {
 } ]
 
 [node name="Inventory" type="Control"]
-rect_pivot_offset = Vector2( -16, 80 )
+pause_mode = 2
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( -0.144577, 0.290016 )
+position = Vector2( -0.148651, 0.280617 )
 frames = SubResource( 11 )
 animation = "oui"
 frame = 9
 
-[node name="Item" type="Node2D" parent="."]
-position = Vector2( 0.0040741, 0.00937653 )
-script = ExtResource( 5 )
-
-[node name="Slot 1" type="Sprite" parent="Item"]
+[node name="cursor" type="Sprite" parent="."]
 position = Vector2( -95, -32 )
 scale = Vector2( 0.963462, 1 )
 texture = ExtResource( 3 )
-vframes = 3
+hframes = 3
+script = ExtResource( 4 )
+
+[node name="Item" type="Node2D" parent="."]
+script = ExtResource( 5 )
+
+[node name="sword2" type="Sprite" parent="Item"]
+position = Vector2( 95.008, -32.653 )
+scale = Vector2( 0.963462, 1 )
+texture = ExtResource( 3 )
+hframes = 3
+frame = 2
+
+[node name="Potion" type="Sprite" parent="Item"]
+position = Vector2( 0, -32.653 )
+scale = Vector2( 0.963462, 1 )
+texture = ExtResource( 3 )
+hframes = 3
+frame = 2
+
+[node name="potion" type="Sprite" parent="Item"]
+position = Vector2( -94.8033, -32.6534 )
+scale = Vector2( 0.963462, 1 )
+texture = ExtResource( 3 )
 hframes = 3
 frame = 1
 
-[node name="Slot 2" type="Sprite" parent="Item"]
-position = Vector2( 0, -32 )
-scale = Vector2( 0.963462, 1 )
-texture = ExtResource( 3 )
-vframes = 3
-hframes = 3
-frame = 5
-
-[node name="Slot 3" type="Sprite" parent="Item"]
-position = Vector2( 95, -32 )
-scale = Vector2( 0.963462, 1 )
-texture = ExtResource( 3 )
-vframes = 3
-hframes = 3
-frame = 7
-
-[node name="Slot 4" type="Sprite" parent="Item"]
+[node name="potion2" type="Sprite" parent="Item"]
 position = Vector2( -95, 32 )
 scale = Vector2( 0.963462, 1 )
 texture = ExtResource( 3 )
-vframes = 3
 hframes = 3
-frame = 6
-
-[node name="Slot 5" type="Sprite" parent="Item"]
-position = Vector2( 0, 32 )
-scale = Vector2( 0.963462, 1 )
-texture = ExtResource( 3 )
-vframes = 3
-hframes = 3
-frame = 3
-
-[node name="Slot 6" type="Sprite" parent="Item"]
-position = Vector2( 95, 32 )
-scale = Vector2( 0.963462, 1 )
-texture = ExtResource( 3 )
-vframes = 3
-hframes = 3
-frame = 8
-
-[node name="cursor" type="Sprite" parent="."]
-position = Vector2( -94.9959, -31.9906 )
-scale = Vector2( 0.963462, 1 )
-texture = ExtResource( 3 )
-vframes = 3
-hframes = 3
-script = ExtResource( 4 )
+frame = 1
 [connection signal="animation_finished" from="AnimatedSprite" to="cursor" method="_on_AnimatedSprite_animation_finished"]
+[connection signal="frame_changed" from="AnimatedSprite" to="cursor" method="_on_AnimatedSprite_frame_changed"]

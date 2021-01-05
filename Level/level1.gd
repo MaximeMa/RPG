@@ -7,4 +7,4 @@ func _ready():
 	if random == true:
 		randomize()
 
-#salut bg
+

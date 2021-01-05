@@ -22,6 +22,7 @@ config/icon="res://icon.png"
 [autoload]
 
 PlayerStats="*res://Player/PlayerStats.tscn"
+RedPotion="*res://Item/Item.tscn"
 
 [display]
 
@@ -109,12 +110,16 @@ Inventory={
 
 [layer_names]
 
+2d_render/layer_1="World"
 2d_physics/layer_1="World"
+2d_render/layer_2="Player"
 2d_physics/layer_2="Player"
+2d_render/layer_3="UI"
 2d_physics/layer_3="PlayerHurtbox"
 2d_physics/layer_4="EnemyHurtBox"
 2d_physics/layer_5="EnemyLayer"
 2d_physics/layer_6="SoftCollisons"
+2d_physics/layer_7="Item"
 
 [rendering]
 

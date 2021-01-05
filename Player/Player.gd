@@ -23,12 +23,12 @@ onready var animationTree = $AnimationTree
 onready var animationState = animationTree.get("parameters/playback")
 onready var swordHitbox = $Position2D/SwordHitBox
 onready var hurtBox = $HurtBox
-onready var inventory = $"Camera2D/Inventory"
+onready var inventory =  $"YSort/Inventory"
 
 func _physics_process(delta):
 	match state:
 		MOVE:
-			move_state(delta) 
+			move_state(delta)
 		ROLL:
 			roll_state(delta)
 		ATTACK:
