@@ -6,8 +6,6 @@
  </p>
 
 
-If you have any questions, read the wiki or watch the instructions video: https://www.youtube.com/watch?v=LVjcTBjyehU
-
-<i>If you have any Issues or ideas open an issue on Github.com: https://github.com/Schweini07/Dialogbox</i>
+A RPG project on Godot.
 
 
