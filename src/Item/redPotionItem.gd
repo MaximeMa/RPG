@@ -2,6 +2,7 @@ extends Node
 
 var pickable = false
 
+
 func _ready():
 	pass
 

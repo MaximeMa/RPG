@@ -31,6 +31,10 @@ func _physics_process(delta):
 	if connect == true:
 		Global.connect("haveSword", self, "set_can_attack")
 		connect = false
+	if Input.is_action_just_pressed("save"):
+		Global.emit_signal("save")
+	if Input.is_action_just_pressed("load"):
+		Global.emit_signal("loadSave")
 	match state:
 		MOVE:
 			move_state(delta)

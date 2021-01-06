@@ -5,13 +5,8 @@
 [ext_resource path="res://src/Overlap/HitBox.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/Overlap/SwordHitBox.gd" type="Script" id=4]
 [ext_resource path="res://src/Overlap/HurtBox.tscn" type="PackedScene" id=5]
-[ext_resource path="res://src/ui/UI/Inventory.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/ui/Inventory.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/Player/Camera2D.tscn" type="PackedScene" id=7]
-
-
-
-
-
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 4.30867
@@ -609,7 +604,7 @@ states/Run/node = SubResource( 38 )
 states/Run/position = Vector2( 776, 82 )
 transitions = [ "Idle", "Run", SubResource( 39 ), "Run", "Idle", SubResource( 40 ), "Idle", "Attack", SubResource( 41 ), "Attack", "Idle", SubResource( 42 ), "Roll", "Idle", SubResource( 43 ), "Idle", "Roll", SubResource( 44 ) ]
 start_node = "Idle"
-graph_offset = Vector2( -91, -110 )
+graph_offset = Vector2( -61, 60 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=46]
 

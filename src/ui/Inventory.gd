@@ -12,12 +12,12 @@ onready var slot6 = $"Item/Slot 6"
 onready var cursor =$"cursor"
 
 var connect = true
-var Slot1 = 8
-var Slot2 = 8
-var Slot3 = 8
-var Slot4 = 8
-var Slot5 = 8
-var Slot6 = 8
+var Slot1 = 8 
+var Slot2 = 8 
+var Slot3 = 8 
+var Slot4 = 8 
+var Slot5 = 8 
+var Slot6 = 8 
 var Slot1Free = false
 var Slot2Free = false
 var Slot3Free = false
@@ -33,6 +33,8 @@ func _on_ready():
 	pass
 
 func _process(_delta):
+	if Input.is_action_just_pressed("Inventory"):
+		print(Slot1)
 	if connect == true:
 # warning-ignore:return_value_discarded
 		Global.connect("pick", self, "_add_item")
@@ -54,17 +56,119 @@ func _playing_animation():
 
 func _check_slots():
 	if slot1.frame < numberOfFrame:
-		_match(slot1, Slot1, Slot1Free)
+		match slot1.frame:
+			1:
+				Slot1 = 1
+			2: 
+				Slot1 = 2
+			3: 
+				Slot1 = 3
+			4:
+				Slot1 = 4
+			5:
+				Slot1 = 5
+			6:
+				Slot1 = 6
+			7:
+				Slot1 = 7
+			8:
+				Slot1 = 8
+				Slot1Free = true
 		if slot2.frame < numberOfFrame:
-			_match(slot2, Slot2, Slot2Free)
+			match slot2.frame:
+				1:
+					Slot2 = 1
+				2: 
+					Slot2 = 2
+				3: 
+					Slot2 = 3
+				4:
+					Slot2 = 4
+				5:
+					Slot2 = 5
+				6:
+					Slot2 = 6
+				7:
+					Slot2 = 7
+				8:
+					Slot2 = 8
+					Slot2Free = true
 			if slot3.frame < numberOfFrame:
-				_match(slot3, Slot3, Slot3Free)
+				match slot3.frame:
+					1:
+						Slot3 = 1
+					2: 
+						Slot3 = 2
+					3: 
+						Slot3 = 3
+					4:
+						Slot3 = 4
+					5:
+						Slot3 = 5
+					6:
+						Slot3 = 6
+					7:
+						Slot3 = 7
+					8:
+						Slot3 = 8
+						Slot3Free = true
 				if slot4.frame < numberOfFrame:
-					_match(slot4, Slot4, Slot4Free)
+					match slot4.frame:
+						1:
+							Slot4 = 1
+						2: 
+							Slot4 = 2
+						3: 
+							Slot4 = 3
+						4:
+							Slot4 = 4
+						5:
+							Slot4 = 5
+						6:
+							Slot4 = 6
+						7:
+							Slot4 = 7
+						8:
+							Slot4 = 8
+							Slot4Free = true
 					if slot5.frame < numberOfFrame:
-						_match(slot5, Slot5, Slot5Free)
+						match slot5.frame:
+							1:
+								Slot5 = 1
+							2: 
+								Slot5 = 2
+							3: 
+								Slot5 = 3
+							4:
+								Slot5 = 4
+							5:
+								Slot5 = 5
+							6:
+								Slot5 = 6
+							7:
+								Slot5 = 7
+							8:
+								Slot5 = 8
+								Slot5Free = true
 						if slot6.frame < numberOfFrame:
-							_match(slot6, Slot6, Slot6Free)
+							match slot6.frame:
+								1:
+									Slot6 = 1
+								2: 
+									Slot6 = 2
+								3: 
+									Slot6 = 3
+								4:
+									Slot6 = 4
+								5:
+									Slot6 = 5
+								6:
+									Slot6 = 6
+								7:
+									Slot6 = 7
+								8:
+									Slot6 = 8
+									Slot6Free = true
 							inventoryFull = true
 						else:
 							Slot6Free = true
@@ -131,26 +235,6 @@ func _check_cursor():
 							currentCursor = slot6
 							currentItem = slot6.frame
 
-func _match(slot, Slot, SlotFree):
-	match slot.frame:
-			1:
-				Slot = 1
-			2: 
-				Slot = 2
-			3: 
-				Slot = 3
-			4:
-				Slot = 4
-			5:
-				Slot = 5
-			6:
-				Slot = 6
-			7:
-				Slot = 7
-			8:
-				Slot = 8
-				SlotFree = true
-
 func item_action():
 	match currentItem:
 		1:
@@ -158,3 +242,6 @@ func item_action():
 		2:
 			Global.emit_signal("drinkRedPotion")
 			currentCursor.frame = 8
+
+
+

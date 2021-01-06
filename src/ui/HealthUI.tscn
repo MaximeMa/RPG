@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://src/ui/UI/HealthUI.gd" type="Script" id=1]
-[ext_resource path="res://src/ui/UI/HeartUIEmpty.png" type="Texture" id=2]
-[ext_resource path="res://src/ui/UI/HeartUIFull.png" type="Texture" id=3]
+[ext_resource path="res://src/ui/HealthUI.gd" type="Script" id=1]
+[ext_resource path="res://Asset/UI/HeartUIEmpty.png" type="Texture" id=2]
+[ext_resource path="res://Asset/UI/HeartUIFull.png" type="Texture" id=3]
 
 [node name="HealthUI" type="Control"]
 margin_right = 104.0

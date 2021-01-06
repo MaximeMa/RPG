@@ -1,5 +1,7 @@
 extends Node
 
-signal pick(item)
+signal pick
 signal haveSword
 signal drinkRedPotion
+signal save
+signal loadSave

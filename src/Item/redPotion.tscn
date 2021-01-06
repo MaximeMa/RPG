@@ -4,8 +4,6 @@
 [ext_resource path="res://src/Item/redPotion.gd" type="Script" id=2]
 [ext_resource path="res://Asset/Item/itemsGround.png" type="Texture" id=3]
 
-
-
 [node name="redPotion" type="Node2D"]
 script = ExtResource( 2 )
 
