@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Asset/Effects/HitEffect.png" type="Texture" id=2]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 24, 24 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 2 )
+region = Rect2( 24, 0, 24, 24 )
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 10.0
+} ]
+
+[sub_resource type="GDScript" id=7]
+script/source = "extends AnimatedSprite
+
+func _ready():
+	connect(\"animation_finished\", self,\"_on_AnimatedSprite_animation_finished\")
+	play(\"Animate\")
+	frame = 0
+
+
+func _on_AnimatedSprite_animation_finished():
+	queue_free()
+
+"
+
+[node name="HitEffect" type="AnimatedSprite"]
+frames = SubResource( 3 )
+frame = 1
+script = SubResource( 7 )

@@ -16,12 +16,12 @@ _global_script_class_icons={
 [application]
 
 config/name="RPG"
-run/main_scene="res://Asset/Level/level1.tscn"
+run/main_scene="res://src/Level/level1.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
-PlayerStats="*res://Asset/Player/PlayerStats.tscn"
+PlayerStats="*res://src/Player/PlayerStats.tscn"
 Global="*res://Global.gd"
 
 [display]
