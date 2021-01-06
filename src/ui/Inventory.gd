@@ -38,6 +38,7 @@ func _process(_delta):
 	if connect == true:
 # warning-ignore:return_value_discarded
 		Global.connect("pick", self, "_add_item")
+		Global.connect("swordPick", self,"_add_item")
 		connect = false
 	_check_slots()
 	if slot1.frame == 1 or slot2.frame == 1or slot3.frame == 1 or slot4.frame == 1 or slot5.frame == 1 or slot6.frame == 1:

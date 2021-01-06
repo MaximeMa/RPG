@@ -6,6 +6,8 @@ export(Script) var game_save_class
 
 var connect = true
 var saveVars = ["playerPos", "maxHealth", "health", "ItemSlot1", "ItemSlot2", "ItemSlot3", "ItemSlot4", "ItemSlot5", "ItemSlot6"]
+var file = 01
+
 func _ready():
 	if not _load_game():
 		pass
@@ -19,10 +21,13 @@ func _process(_delta):
 		connect = false
 
 func _save_game():
+	
 	var newSave = game_save_class.new()
 	newSave.playerPos = $"YSort/Player".position
 	newSave.maxHealth = PlayerStats.maxHealth
 	newSave.health    = PlayerStats.health
+	newSave.redPotionPicked = $redPotion.picked
+	newSave.swordPicked = $Sword.picked
 	newSave.ItemSlot1 = $"YSort/Player/YSort/Inventory".slot1.frame
 	newSave.ItemSlot2 = $"YSort/Player/YSort/Inventory".slot2.frame
 	newSave.ItemSlot3 = $"YSort/Player/YSort/Inventory".slot3.frame
@@ -30,18 +35,19 @@ func _save_game():
 	newSave.ItemSlot5 = $"YSort/Player/YSort/Inventory".slot5.frame
 	newSave.ItemSlot6 = $"YSort/Player/YSort/Inventory".slot6.frame
 	
+	
 	var dir = Directory.new()
 	if not  dir.dir_exists("user://saves/"):
 		dir.make_dir_recursive("user://saves/")
 
-	ResourceSaver.save("user://saves/Save_01.tres", newSave)
+	ResourceSaver.save("user://saves/Save.res", newSave)
 
 func _load_game():
 	var dir = Directory.new()
-	if not dir.file_exists("user://saves/Save_01.tres"):
+	if not dir.file_exists("user://saves/Save.res"):
 		return false
 		
-	var gameSave = load("user://saves/Save_01.tres")
+	var gameSave = load("user://saves/Save.res")
 	if not _verify_save(gameSave):
 		return false
 		
@@ -54,7 +60,8 @@ func _load_game():
 	$"YSort/Player/YSort/Inventory".slot4.frame = gameSave.ItemSlot4
 	$"YSort/Player/YSort/Inventory".slot5.frame = gameSave.ItemSlot5
 	$"YSort/Player/YSort/Inventory".slot6.frame = gameSave.ItemSlot6
-	
+	$"redPotion".picked = gameSave.redPotionPicked
+	$"Sword".picked = gameSave.swordPicked
 	return true
 	
 

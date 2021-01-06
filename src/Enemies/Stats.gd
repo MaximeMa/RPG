@@ -9,6 +9,8 @@ signal health_changed(value)
 signal max_health_changed(value)
 
 func _process(_delta):
+	if health > maxHealth:
+		set_health(maxHealth)
 	if connect == true:
 		Global.connect("drinkRedPotion", self, "_heal")
 		connect = false

@@ -9,3 +9,5 @@ export(int) var ItemSlot3
 export(int) var ItemSlot4
 export(int) var ItemSlot5
 export(int) var ItemSlot6
+export(bool) var redPotionPicked
+export(bool) var swordPicked

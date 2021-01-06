@@ -18,7 +18,7 @@ animations = [ {
 "speed": 10.0
 } ]
 
-[sub_resource type="GDScript" id=7]
+[sub_resource type="GDScript" id=4]
 script/source = "extends AnimatedSprite
 
 func _ready():
@@ -35,4 +35,4 @@ func _on_AnimatedSprite_animation_finished():
 [node name="HitEffect" type="AnimatedSprite"]
 frames = SubResource( 3 )
 frame = 1
-script = SubResource( 7 )
+script = SubResource( 4 )

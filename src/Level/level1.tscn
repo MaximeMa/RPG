@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://src/Core/Game.gd" type="Script" id=1]
 [ext_resource path="res://Asset/World/TileSets/rocksTileSet.png" type="Texture" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://Asset/World/GrassBackground.png" type="Texture" id=10]
 [ext_resource path="res://src/Item/redPotion.tscn" type="PackedScene" id=11]
 [ext_resource path="res://src/Core/GameSave.gd" type="Script" id=12]
+[ext_resource path="res://src/Enemies/Bat.tscn" type="PackedScene" id=13]
 
 [sub_resource type="TileSet" id=1]
 0/name = "rocksTileSet.png 0"
@@ -282,6 +283,14 @@ position = Vector2( 811.547, 199.272 )
 
 [node name="redPotion" parent="." instance=ExtResource( 11 )]
 position = Vector2( 350.911, 194.313 )
+
+[node name="bat" type="Node2D" parent="."]
+
+[node name="Bat" parent="bat" instance=ExtResource( 13 )]
+position = Vector2( 434.673, 173.239 )
+
+[node name="Bat2" parent="bat" instance=ExtResource( 13 )]
+position = Vector2( 574.524, 149.931 )
 
 [editable path="YSort/Player"]
 
