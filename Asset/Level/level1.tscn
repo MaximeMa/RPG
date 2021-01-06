@@ -1,8 +1,7 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Asset/World/TileSets/Cliff.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Asset/World/TileSets/Dirt.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Asset/Item/redPotion.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Asset/World/GrassBackground.png" type="Texture" id=4]
 [ext_resource path="res://Asset/Player/Player.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Asset/World/grass.tscn" type="PackedScene" id=6]
@@ -276,22 +275,7 @@ z_as_relative = false
 [node name="AnimationTree" parent="YSort/Player" index="3"]
 parameters/playback = SubResource( 2 )
 
-[node name="redPotion" parent="." instance=ExtResource( 3 )]
-position = Vector2( 211.628, 229.975 )
-rotation = 0.184291
-
-[node name="Item" parent="redPotion" index="0"]
-rotation = -0.175488
-
-[node name="redPotion2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 381.151, 212.468 )
-
-[node name="redPotion3" parent="." instance=ExtResource( 3 )]
-position = Vector2( 366.436, 126.276 )
-
 [node name="Sword" parent="." instance=ExtResource( 11 )]
-position = Vector2( 250.281, 137.8 )
+position = Vector2( 811.547, 199.272 )
 
 [editable path="YSort/Player"]
-
-[editable path="redPotion"]

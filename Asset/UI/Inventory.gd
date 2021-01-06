@@ -9,7 +9,9 @@ onready var slot3 = $"Item/Slot 3"
 onready var slot4 = $"Item/Slot 4"
 onready var slot5 = $"Item/Slot 5"
 onready var slot6 = $"Item/Slot 6"
+onready var cursor =$"cursor"
 
+var connect = true
 var Slot1 = 8
 var Slot2 = 8
 var Slot3 = 8
@@ -23,25 +25,34 @@ var Slot4Free = false
 var Slot5Free = false
 var Slot6Free = false
 var inventoryFull = false
+var haveSword = false
+var currentCursor = 8
+var currentItem = 0
 
 func _on_ready():
-	Global.connect("pick", self, "test")
-	
-
+	pass
 
 func _process(_delta):
-	Global.connect("pick", self, "_add_item")
-	check_slots()
-	if Input.is_action_just_pressed("Inventory"):
-		print(Slot1, " ", Slot2, " ", Slot3, " ", Slot4," ", Slot5, " ", Slot6)
+	if connect == true:
+# warning-ignore:return_value_discarded
+		Global.connect("pick", self, "_add_item")
+		connect = false
+	_check_slots()
+	if slot1.frame == 1 or slot2.frame == 1or slot3.frame == 1 or slot4.frame == 1 or slot5.frame == 1 or slot6.frame == 1:
+		haveSword = true
+	if haveSword == true:
+		Global.emit_signal("haveSword", true)
+	else:
+		Global.emit_signal("haveSword", false)
+	if animated.frame == 9:
+		_check_cursor()
+		if Input.is_action_just_pressed("ui_accept"):
+			item_action()
 
-func test():
-	print("test")
-
-func playing_animation():
+func _playing_animation():
 	animated.play("oui")
 
-func check_slots():
+func _check_slots():
 	if slot1.frame < numberOfFrame:
 		match slot1.frame:
 			1:
@@ -196,4 +207,36 @@ func _add_item(item):
 							Slot6Free = false
 						else:
 							inventoryFull = true
-						
+
+func _check_cursor():
+	if cursor.position == slot1.position:
+		currentCursor = slot1
+		currentItem = slot1.frame
+	else:
+		if cursor.position == slot2.position:
+			currentCursor = slot2
+			currentItem = slot2.frame
+		else:
+			if cursor.position == slot3.position:
+				currentCursor = slot3
+				currentItem = slot3.frame
+			else:
+				if cursor.position == slot4.position:
+					currentCursor = slot4
+					currentItem = slot4.frame
+				else:
+					if cursor.position == slot5.position:
+						currentCursor = slot5
+						currentItem = slot5.frame
+					else:
+						if cursor.position == slot6.position:
+							currentCursor = slot6
+							currentItem = slot6.frame
+
+func item_action():
+	match currentItem:
+		1:
+			pass
+		2:
+			Global.emit_signal("drinkRedPotion")
+			currentCursor.frame = 8

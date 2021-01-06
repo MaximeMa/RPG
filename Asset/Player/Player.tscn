@@ -8,8 +8,6 @@
 [ext_resource path="res://Asset/UI/Inventory.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Asset/Player/Camera2D.tscn" type="PackedScene" id=7]
 
-
-
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 4.30867
 height = 2.21889

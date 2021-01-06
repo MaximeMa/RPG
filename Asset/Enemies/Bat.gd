@@ -11,7 +11,7 @@ export var MAX_SPEED = 50
 export var FRICTION = 200
 export var TARGET_RANGE = 2
 
-const EnemyDeathEffect = preload("res://Effects/EnemyDeathEffect.tscn")
+const EnemyDeathEffect = preload("res://Asset/Effects/EnemyDeathEffect.tscn")
 
 var velocity = Vector2.ZERO
 var knockback = Vector2.ZERO

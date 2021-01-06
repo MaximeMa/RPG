@@ -17,6 +17,8 @@ var roll_vector  = Vector2.DOWN
 var stats = PlayerStats
 var simultaneous_scene = preload("res://Asset/level/GameOver.tscn").instance()
 var inventoryState = "HIDE"
+var canAttack = false
+var connect = true
 
 onready var animationPlayer = $AnimationPlayer 
 onready var animationTree = $AnimationTree
@@ -26,6 +28,9 @@ onready var hurtBox = $HurtBox
 onready var inventory =  $"YSort/Inventory"
 
 func _physics_process(delta):
+	if connect == true:
+		Global.connect("haveSword", self, "set_can_attack")
+		connect = false
 	match state:
 		MOVE:
 			move_state(delta)
@@ -46,7 +51,7 @@ func _physics_process(delta):
 			"SHOW":
 				inventory.show()
 				get_tree().paused = true
-				inventory.playing_animation()
+				inventory._playing_animation()
 				ACCELERATION = 0
 				FRICTION = 999999999999999
 				MAX_SPEED = 0
@@ -88,7 +93,8 @@ func move_state(delta):
 	move()	
 	
 	if Input.is_action_just_pressed("Attack"):
-		state = ATTACK
+		if canAttack == true:
+			state = ATTACK
 		
 	if Input.is_action_just_pressed("roll"):
 		state = ROLL
@@ -121,3 +127,6 @@ func game_over():
 	queue_free()
 	get_tree().get_root().add_child(simultaneous_scene)
 	
+func set_can_attack(value):
+	canAttack = value
+

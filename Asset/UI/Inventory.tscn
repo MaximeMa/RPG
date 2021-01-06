@@ -5,7 +5,6 @@
 [ext_resource path="res://Asset/UI/Item.gd" type="Script" id=3]
 [ext_resource path="res://Asset/UI/InventoryFrame.png" type="Texture" id=4]
 
-
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 4 )
 region = Rect2( 0, 0, 320, 180 )
@@ -123,7 +122,7 @@ hframes = 3
 frame = 8
 
 [node name="cursor" type="Sprite" parent="."]
-position = Vector2( -94.9959, -31.9906 )
+position = Vector2( -95, -32 )
 scale = Vector2( 0.963462, 1 )
 texture = SubResource( 12 )
 vframes = 3
